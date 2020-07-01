@@ -78,8 +78,8 @@ class Database(object):
             scores[db_image_path] = self.score(db_image_path, query_image_path)
 
         # sorting scores
-        sorted_scores = {k: v for k, v in sorted(
-            scores.items(), key=lambda item: item[1])}
+        sorted_scores = {k: v for k, v in reversed(sorted(
+            scores.items(), key=lambda item: item[1]))}
         return sorted_scores
 
     def save(self, path=None):
