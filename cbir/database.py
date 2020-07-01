@@ -66,8 +66,10 @@ class Database(object):
         d = d / np.linalg.norm(d, ord=2)
         q = q / np.linalg.norm(q, ord=2)
         # simplified scoring using the l2 norm
-        score = np.linalg.norm(d - q, ord=2)
-        return score if not np.isnan(score) else 1e6
+        distance = np.linalg.norm(d - q, ord=2)
+        distance = distance if no np.isnan(distance) else 1e6
+        score = (2 - distance) / 2
+        return score
 
     def retrieve(self, query_image_path, n=4):
         # propagate the query down the tree
