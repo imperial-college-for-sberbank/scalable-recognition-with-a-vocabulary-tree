@@ -67,7 +67,7 @@ class Database(object):
         q = q / np.linalg.norm(q, ord=2)
         # simplified scoring using the l2 norm
         distance = np.linalg.norm(d - q, ord=2)
-        distance = distance if no np.isnan(distance) else 1e6
+        distance = distance if np.isnan(distance) else 1e6
         score = (2 - distance) / 2
         return score
 
